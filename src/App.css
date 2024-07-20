@@ -1,42 +1,100 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* CSS */
+
+.popUp {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(15, 14, 19);
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.popUpHeader {
+  width: 100%;
   text-align: center;
+  color: rgb(129, 205, 252);
+  margin-bottom: 20px;
+  font-size: x-large;
+  font-weight: 400;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.contributeSection {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: rgb(148, 109, 240);
+  margin-bottom: 50px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.contributeSectionHeader {
+  font-size: large;
+  margin-bottom: 15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.contributeSection img {
+  height: 25px;
+  width: 25px;
 }
 
-.card {
-  padding: 2em;
+.button-63 {
+  align-items: center;
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 15px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 100px;
+  padding: 10px 15px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
-.read-the-docs {
-  color: #888;
+.button-63:active,
+.button-63:hover {
+  outline: 0;
+}
+
+.connection {
+  display: flex;
+  flex-direction: column;
+}
+.connection a {
+  cursor: pointer;
+}
+
+.connectionHeader {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.connectionContents {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.connectionContents img {
+  height: 32px;
+  width: 32px;
 }

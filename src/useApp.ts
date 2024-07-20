@@ -2,20 +2,6 @@ import { useEffect, useState } from "react";
 
 export const useApp = () => {
   const [color, setColor] = useState("");
-  // const [parentElement, setParentElement] = useState<HTMLElement>(
-  //   document.getElementsByClassName(
-  //     "scaffold-finite-scroll__content"
-  //   )[0] as HTMLElement
-  // );
-
-  // useEffect(() => {
-  //   setParentElement(
-  //     document.getElementsByClassName(
-  //       "scaffold-finite-scroll__content"
-  //     )[0] as HTMLElement
-  //   );
-  //   console.log(parentElement);
-  // }, []);
 
   const userClick = async () => {
     const [currentTab] = await chrome.tabs.query({ active: true });
@@ -39,7 +25,5 @@ export const useApp = () => {
       },
     });
   };
-
-  //   const parentElement = console.log({ parentElement });
   return { color, userClick, setColor };
 };

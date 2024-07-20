@@ -5,68 +5,49 @@ import { useEffect, useState } from "react";
 import { useApp } from "./useApp";
 
 function App() {
-  // const observer = new MutationObserver(userClick);
+  const { color, setColor, userClick } = useApp();
 
-  // const config = { childList: true };
+  const navigateToGithubRepo = () => {
+    const url =
+      "https://github.com/nikhilmeenaa/linkedin-posts-filter-llm-and-static";
+    window.open(url, "_blank");
+  };
 
-  // observer.observe(parentElement, config);
-
-  // class="scaffold-finite-scroll__content"
-  // const [message, setMessage] = useState<string | null>(null);
-  // useEffect(() => {
-  //   const handleMessage = (
-  //     message: any,
-  //     sender: chrome.runtime.MessageSender,
-  //     sendResponse: (response: any) => void
-  //   ) => {
-  //     console.log("Message received in popup:", message);
-  //     setMessage(message.greeting);
-  //   };
-
-  //   chrome.runtime.onMessage.addListener(handleMessage);
-
-  //   // Cleanup listener on component unmount
-  //   return () => {
-  //     chrome.runtime.onMessage.removeListener(handleMessage);
-  //   };
-  // }, []);
-
-  // window.onload = () => {
-  //   const parentElement = document.getElementsByClassName(
-  //     "scaffold-finite-scroll__content"
-  //   )[0] as HTMLElement;
-  //   console.log(parentElement);
-  //   parentElement.addEventListener("onClick", () => {
-  //     console.log("body clicked");
-  //   });
-  // };
-
-  const { color, userClick, setColor } = useApp();
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="popUp">
+      <div className="popUpHeader">LinkedIn Posts Filter</div>
+      <div className="contributeSection">
+        <div className="contributeSectionHeader">
+          Wanna contribute to the code ?
+        </div>
+        <button
+          className="button-63"
+          role="button"
+          onClick={navigateToGithubRepo}
+        >
+          <span>Go to repository</span>
+          <img src="/github.png" alt="github" />
+        </button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <input
-          type="color"
-          onChange={(event) => setColor(event.target.value)}
-        />
-        <button onClick={userClick}>Click</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+
+      <div className="connection">
+        <div className="connectionHeader">Connect with me</div>
+        <div className="connectionContents">
+          <a href="https://github.com/nikhilmeenaa" target="_blank">
+            <img src="/github.png" alt="github" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/nikhil-meena-8152771a1/"
+            target="_blank"
+          >
+            <img src="/linkedin.png" alt="linkedin" />
+          </a>
+          <a href="https://www.instagram.com/nikhilkameena/" target="_blank">
+            <img src="/instagram.png" alt="instagram" />
+          </a>
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   );
 }
 
