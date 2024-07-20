@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "version": "1.0.0",
+  "name": "LinkedIn Posts Filter",
+  "action": {
+    "default_popup": "index.html"
+  },
+  "permissions": ["scripting"],
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "icons": {
+    "32": "linkedin.png"
+  }
+}
