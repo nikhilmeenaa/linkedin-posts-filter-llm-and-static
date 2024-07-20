@@ -1,51 +1,10 @@
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useApp } from "./useApp";
 
 function App() {
-  const [color, setColor] = useState("");
-
-  chrome.runtime.onMessage.addListener(
-    (
-      message: any,
-      sender: chrome.runtime.MessageSender,
-      sendResponse: (response: any) => void
-    ) => {
-      console.log("Message from content script:", message);
-      sendResponse({ farewell: "Goodbye from service worker" });
-    }
-  );
-
-  const userClick = async () => {
-    const [currentTab] = await chrome.tabs.query({ active: true });
-    chrome.scripting.executeScript({
-      target: { tabId: currentTab.id! },
-      args: [color],
-      func: (color) => {
-        const posts = document.getElementsByClassName("artdeco-card");
-        console.log("color", color);
-        for (let i = 0; i < posts.length; i++) {
-          const post = posts[i] as HTMLElement;
-          // post.style.backgroundColor = "red";
-          // post.style.border = "1px solid red";
-          // post.style.display = "none";
-          const text = (post.textContent || "")?.toLocaleLowerCase();
-          if (!text.includes("hiring")) {
-            post.style.display = "none";
-            console.log("Not a hiring post");
-          }
-        }
-      },
-    });
-  };
-
-  const parentElement = document.getElementsByClassName(
-    "scaffold-finite-scroll__content"
-  )[0];
-
-  console.log({ parentElement });
-
   // const observer = new MutationObserver(userClick);
 
   // const config = { childList: true };
@@ -53,7 +12,36 @@ function App() {
   // observer.observe(parentElement, config);
 
   // class="scaffold-finite-scroll__content"
+  // const [message, setMessage] = useState<string | null>(null);
+  // useEffect(() => {
+  //   const handleMessage = (
+  //     message: any,
+  //     sender: chrome.runtime.MessageSender,
+  //     sendResponse: (response: any) => void
+  //   ) => {
+  //     console.log("Message received in popup:", message);
+  //     setMessage(message.greeting);
+  //   };
 
+  //   chrome.runtime.onMessage.addListener(handleMessage);
+
+  //   // Cleanup listener on component unmount
+  //   return () => {
+  //     chrome.runtime.onMessage.removeListener(handleMessage);
+  //   };
+  // }, []);
+
+  // window.onload = () => {
+  //   const parentElement = document.getElementsByClassName(
+  //     "scaffold-finite-scroll__content"
+  //   )[0] as HTMLElement;
+  //   console.log(parentElement);
+  //   parentElement.addEventListener("onClick", () => {
+  //     console.log("body clicked");
+  //   });
+  // };
+
+  const { color, userClick, setColor } = useApp();
   return (
     <>
       <div>
