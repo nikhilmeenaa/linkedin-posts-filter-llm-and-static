@@ -385,7 +385,7 @@ const addSkillAddPopUp = async () => {
   removeAllButton.addEventListener("click", () => {
     skillsContainer.innerHTML = ""; // Remove all skill tags
     filters = [];
-    saveData("filters", []);
+    // saveData("filters", []);
   });
 
   // Event listener for the Save button
