@@ -1,3 +1,14 @@
+chrome.webNavigation.onCompleted.addListener(
+  (details) => {
+    chrome.tabs.get(details.tabId, (tab) => {
+      if (tab.url && !tab.url.startsWith("https://www.linkedin.com/feed")) {
+        chrome.tabs.sendMessage(details.tabId, { action: "cleanup" });
+      }
+    });
+  },
+  { url: [{ urlMatches: ".*" }] }
+);
+
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (
     changeInfo.url &&
