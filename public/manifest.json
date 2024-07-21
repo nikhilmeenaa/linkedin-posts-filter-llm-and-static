@@ -8,13 +8,7 @@
   "action": {
     "default_popup": "index.html"
   },
-  "permissions": [
-    "alarms",
-    "storage",
-    "activeTab",
-    "scripting",
-    "webNavigation"
-  ],
+  "permissions": ["storage", "activeTab", "scripting", "webNavigation"],
   "host_permissions": ["https://www.linkedin.com/feed"],
   "icons": {
     "32": "linkedin.png"

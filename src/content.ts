@@ -79,7 +79,6 @@ button.style.fontSize = "1.7rem";
 document.body.appendChild(button);
 
 const documentButton = document.getElementById("myButton");
-console.log({ documentButton });
 
 documentButton?.addEventListener("click", () => {
   const posts = document.getElementsByClassName("artdeco-card");
@@ -93,7 +92,6 @@ documentButton?.addEventListener("click", () => {
       });
       if (!filterMatchFound) {
         post.style.display = "none";
-        console.log("Not a hiring post");
       }
     }
   });
@@ -121,9 +119,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 // Data ( Filter ) save functions
 
 function saveData(key: string, value: string[]) {
-  chrome.storage.local.set({ [key]: value }, () => {
-    console.log(`Data saved: ${key} = ${value}`);
-  });
+  chrome.storage.local.set({ [key]: value }, () => {});
 }
 
 // Retrieve data from chrome.storage.local
@@ -350,7 +346,6 @@ const addSkillAddPopUp = async () => {
         filters.push(skill);
         addSkill(skill, String(filters.length));
         skillInput.value = "";
-        console.log({ filters });
       }
     }
   });
@@ -364,7 +359,6 @@ const addSkillAddPopUp = async () => {
       if (Number(index) < filters.length) {
         filters.splice(Number(index), 1);
       }
-      console.log({ filters });
     }
   });
 
@@ -393,7 +387,6 @@ const addSkillAddPopUp = async () => {
     const skills = Array.from(skillsContainer.children).map((tag: any) =>
       tag.textContent.trim()
     );
-    console.log({ filters });
     saveData("filters", filters);
     hideSkillTagger();
     // alert("Skills saved: " + skills.join(", "));
@@ -403,6 +396,3 @@ const addSkillAddPopUp = async () => {
   // Call this function where needed (e.g., on a button click to open the skill tagger)
   showSkillTagger();
 };
-
-// addSkillAddPopUp();
-console.log("after adding skill tagger");
