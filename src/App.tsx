@@ -1,84 +1,53 @@
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useApp } from "./useApp";
 
 function App() {
-  const [color, setColor] = useState("");
+  const { color, setColor, userClick } = useApp();
 
-  chrome.runtime.onMessage.addListener(
-    (
-      message: any,
-      sender: chrome.runtime.MessageSender,
-      sendResponse: (response: any) => void
-    ) => {
-      console.log("Message from content script:", message);
-      sendResponse({ farewell: "Goodbye from service worker" });
-    }
-  );
-
-  const userClick = async () => {
-    const [currentTab] = await chrome.tabs.query({ active: true });
-    chrome.scripting.executeScript({
-      target: { tabId: currentTab.id! },
-      args: [color],
-      func: (color) => {
-        const posts = document.getElementsByClassName("artdeco-card");
-        console.log("color", color);
-        for (let i = 0; i < posts.length; i++) {
-          const post = posts[i] as HTMLElement;
-          // post.style.backgroundColor = "red";
-          // post.style.border = "1px solid red";
-          // post.style.display = "none";
-          const text = (post.textContent || "")?.toLocaleLowerCase();
-          if (!text.includes("hiring")) {
-            post.style.display = "none";
-            console.log("Not a hiring post");
-          }
-        }
-      },
-    });
+  const navigateToGithubRepo = () => {
+    const url =
+      "https://github.com/nikhilmeenaa/linkedin-posts-filter-llm-and-static";
+    window.open(url, "_blank");
   };
 
-  const parentElement = document.getElementsByClassName(
-    "scaffold-finite-scroll__content"
-  )[0];
-
-  console.log({ parentElement });
-
-  // const observer = new MutationObserver(userClick);
-
-  // const config = { childList: true };
-
-  // observer.observe(parentElement, config);
-
-  // class="scaffold-finite-scroll__content"
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="popUp">
+      <div className="popUpHeader">LinkedIn Posts Filter</div>
+      <div className="contributeSection">
+        <div className="contributeSectionHeader">
+          Wanna contribute to the code ?
+        </div>
+        <button
+          className="button-63"
+          role="button"
+          onClick={navigateToGithubRepo}
+        >
+          <span>Go to repository</span>
+          <img src="/github.png" alt="github" />
+        </button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <input
-          type="color"
-          onChange={(event) => setColor(event.target.value)}
-        />
-        <button onClick={userClick}>Click</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+
+      <div className="connection">
+        <div className="connectionHeader">Connect with me</div>
+        <div className="connectionContents">
+          <a href="https://github.com/nikhilmeenaa" target="_blank">
+            <img src="/github.png" alt="github" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/nikhil-meena-8152771a1/"
+            target="_blank"
+          >
+            <img src="/linkedin.png" alt="linkedin" />
+          </a>
+          <a href="https://www.instagram.com/nikhilkameena/" target="_blank">
+            <img src="/instagram.png" alt="instagram" />
+          </a>
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   );
 }
 

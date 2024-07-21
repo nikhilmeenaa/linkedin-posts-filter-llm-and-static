@@ -8,9 +8,15 @@
   "action": {
     "default_popup": "index.html"
   },
-  "permissions": ["alarms", "storage", "activeTab", "scripting"],
+  "permissions": ["storage", "activeTab", "scripting", "webNavigation"],
   "host_permissions": ["https://www.linkedin.com/feed"],
   "icons": {
     "32": "linkedin.png"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.linkedin.com/feed*"],
+      "js": ["content.js"]
+    }
+  ]
 }
