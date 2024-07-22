@@ -1,4 +1,8 @@
-# React + TypeScript + Vite
+# Linkedin Posts Filter
+# Chrome Web Store Link -> https://chromewebstore.google.com/detail/linkedin-posts-filter/lgjobdoomhngeepifkmdjfecdagnfcah
+
+
+# React + Vite + Typescript
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
