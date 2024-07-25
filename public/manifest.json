@@ -11,7 +11,7 @@
   "permissions": ["storage", "activeTab", "scripting", "webNavigation"],
   "host_permissions": ["https://www.linkedin.com/feed"],
   "icons": {
-    "32": "linkedin.png"
+    "32": "filter.png"
   },
   "content_scripts": [
     {
